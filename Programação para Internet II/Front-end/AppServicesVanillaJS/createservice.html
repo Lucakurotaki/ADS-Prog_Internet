@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="/createservice.js"></script>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@900&family=Open+Sans:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <title>Criar um novo serviço</title>
+</head>
+<body class="main-bg container">
+    <aside class="white-bg title">
+        <div class="main-content title-content">
+            <h1><a href="/index.html">AppServices</a></h1>
+        </div>
+    </aside>
+
+    <div class="title-spacing-small"></div>
+
+    <section id="create-service" class="section white-bg">
+        <div class="create">
+            <div class="input">
+                <label for="service-titulo">Título</label>
+                <input type="text" id="service-titulo" class="create-text" placeholder="Título" required/>
+            </div>
+            <div class="input">
+                <label for="service-dtlimite">Data limite</label>
+                <input type="datetime-local" name="dtlimite" class="create-text" id="service-dtlimite" pattern="[0-9]{4}-[0-9]{2}-[0-9]{2}" required>
+            </div>
+            <div class="input">
+                <label for="service-orcamento">Orçamento</label>
+                <input type="number" name="orcamento" id="service-orcamento" class="create-text" placeholder="Digite o valor do orçamento" required>
+            </div>
+            <div class="input">
+                <label for="service-descricao">Descrição</label>
+                <textarea name="descricao" id="service-descricao" class="textarea" cols="30" rows="10" placeholder="Escreva a descricao do serviço"></textarea>
+            </div>
+        </div>
+    
+        <button id="btnNovoService" class="button">Salvar</button>
+    </section>
+</body>
+</html>

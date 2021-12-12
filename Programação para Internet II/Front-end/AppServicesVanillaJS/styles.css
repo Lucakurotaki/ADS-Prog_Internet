@@ -1,0 +1,181 @@
+:root {
+    --primary-color: #0002FFA6;
+    --white-color: #FFFFFF;
+    --gap: 3rem;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+
+html {
+    font-size: 62.5%;
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 2rem;
+    color: var(--primary-color);
+}
+
+h1, h2, h3, h4{
+    font-family: 'Montserrat', sans-serif;
+}
+
+h1 {
+    font-size: 6rem;
+}
+
+h2 {
+    font-size: 6rem;
+    margin-bottom: 5rem;
+    line-height: 1.2;
+}
+
+h3 {
+    font-size: 3rem;
+}
+
+h4 {
+    font-size: 2rem;
+}
+
+p {
+    margin-bottom: 3rem;
+}
+
+a {
+    text-decoration: none;
+}
+
+.title {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    z-index: 1;
+    border-bottom: 0.1rem solid var(--primary-color);
+}
+
+.title h1 a {
+    color: inherit;
+}
+
+.main-content {
+    max-width: 120rem;
+    margin: 0 auto;
+    padding: 10rem var(--gap);
+}
+
+.title-content {
+    display: flex;
+    justify-content: center;
+    padding-top: 0;
+    padding-bottom: 0;
+}
+
+.title-spacing {
+    height: 25vh;
+}
+
+.title-spacing-small{
+    height: 10vh;
+}
+
+.main-bg {
+    background-image: url('/background.svg');
+    background-size: cover;
+    background-position: center center;
+    color: var(--white-color);
+}
+
+.white-bg {
+    background: var(--white-color);
+    color: var(--primary-color);
+}
+
+
+
+.section{
+    min-height: 30vh;
+    width: 50vw;
+    border-radius: 1em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    margin: var(--gap);
+}
+
+.create{
+    display: flex;
+    justify-content:space-around;
+    flex-direction: column;
+    align-items: center;
+    margin: var(--gap);
+    padding: var(--gap);
+}
+
+.content{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 30vw;
+    padding: var(--gap);
+    margin: var(--gap);
+}
+
+.border {
+    border-style: solid;
+    border-radius: 5px;
+}
+
+.container{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.button{
+    height: 5rem;
+    width: 15rem;
+    margin: var(--gap);
+    background-color: var(--primary-color);
+    font-family: 'Montserrat', sans-serif;
+    color: var(--white-color);
+    border-radius: 5px;
+}
+
+#style-id{
+    color: rgb(189, 189, 189);
+    font-size: 50%;
+}
+
+.textarea{
+    border-color: var(--primary-color);
+    border-radius: 5px;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 1.5rem;
+    height: 20vh;
+    width: 50vh;
+}
+
+.create-text{
+    border-color: var(--primary-color);
+    border-radius: 5px;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 1.5rem;
+    height: 5vh;
+    width: 50vh;
+}
+
+.input {
+    display: flex;
+    justify-content: space-around;
+    height: 10vh;
+    width: 40vw;
+}

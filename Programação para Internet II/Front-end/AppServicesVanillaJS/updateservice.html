@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="/updateservice.js"></script>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@900&family=Open+Sans:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <title id="service-title-head"></title>
+</head>
+<body class="main-bg container">
+    <aside class="white-bg title">
+        <div class="main-content title-content">
+            <h1><a href="/index.html">AppServices</a></h1>
+        </div>
+    </aside>
+
+    <div class="title-spacing-small"></div>
+
+    <section id="update-service" class="white-bg section">
+        <h3>Alterar o serviço</h3>
+
+        <div class="create">
+            <div class="input">
+                <label for="service-titulo">Título</label>
+                <input type="text" class="create-text" id="service-titulo" placeholder="Título" required/>
+            </div>
+            <div class="input">
+                <label for="service-situacao">Situação</label>
+                <select name="situacao" class="create-text" id="select-situacao" onchange="update()">
+                    <option value="Aberto">Aberto</option>
+                    <option value="Concluído">Concluído</option>
+                    <option value="Cancelado">Cancelado</option>
+                </select>
+                <input type="hidden" id="service-situacao">
+                <script type="text/javascript">
+                    function update(){
+                        var select = document.getElementById('select-situacao');
+                        var option = select.options[select.selectedIndex];
+
+                        document.getElementById('service-situacao').value = option.value;
+                    }
+                    update();
+                </script>
+            </div>
+            <div class="input">
+                <label for="service-dtcadastro">Data de cadastro</label>
+                <input type="text" name="dtcadastro" class="create-text" id="service-dtcadastro"  readonly/>
+            </div>
+            <div class="input">
+                <label for="service-dtlimite">Data limite</label>
+                <input type="text" name="dtlimite" class="create-text" id="service-dtlimite" readonly>
+            </div>
+            <div class="input">
+                <label for="service-orcamento">Orçamento</label>
+                <input type="number" name="orcamento" class="create-text" id="service-orcamento" placeholder="Digite o valor do orçamento" required>
+            </div>
+            <div class="input">
+                <label for="service-descricao">Descrição</label>
+                <textarea name="descricao" id="service-descricao" class="textarea" cols="30" rows="10" placeholder="Escreva a descricao do serviço"></textarea>
+            </div>
+        </div>
+
+        <button id="btnAtualizarService" class="button">Salvar</button>
+    </section>
+</body>
+</html>

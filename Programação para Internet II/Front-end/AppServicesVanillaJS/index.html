@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="index.js"></script>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@900&family=Open+Sans:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <title>AppServices</title>
+</head>
+<body class="main-bg container">
+    <aside class="white-bg title">
+        <div class="main-content title-content">
+            <h1><a href="#">AppServices</a></h1>
+        </div>
+    </aside>
+
+    <div class="title-spacing"></div>
+
+    <section id="create-service" class="section white-bg">
+        <div class="create">
+            <div>
+                <h3>Criar um novo serviço</h3>
+            </div>
+            <div>
+                <input type="button" class="button" name="criar" id="criar" onclick="location.href='/createservice.html';" value='Ir para "Criar"' >
+            </div>
+        </div>
+    </section>
+
+    <section id="container-services" class="section white-bg">
+        <div>
+            <h3>Lista de serviços</h3>
+        </div>
+        <template id="service-view-template">
+            <div class="content border">
+                <p id="style-id">Id: <span></span></p>
+                <p>Título: <span></span></p>
+                <p>Situação: <span></span></p>
+                
+                <button id="btnOpenService" class="button" onclick="">Abrir</button>
+            </div>
+        </template>
+    </section>
+</body>
+</html>

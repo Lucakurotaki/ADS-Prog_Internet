@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="service.js"></script>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@900&family=Open+Sans:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+
+    <title id="service-title-head"></title>
+</head>
+<body class="main-bg container">
+    <aside class="white-bg title">
+        <div class="main-content title-content">
+            <h1><a href="/index.html">AppServices</a></h1>
+        </div>
+    </aside>
+
+    <div class="title-spacing-small"></div>
+
+    <section id="service" class="section white-bg">
+
+        <h3 id="service-title"></h3>
+
+        <div id="container-service">
+            <template id="service-template">
+                <div class="content">
+                    <p id="style-id">Id: <span></span></p>
+                    <p>Título: <span></span></p>
+                    <p>Situação: <span></span></p>
+                    <p>Data de cadastro: <span></span></p>
+                    <p>Data limite: <span></span></p>
+                    <p>Orçamento: R$<span></span></p>
+                    <p>Descrição: <span></span></p>
+    
+                    <button id="btnUpdateService" class="button">Alterar</button>
+                </div>
+            </template>
+        </div>
+    </section>
+
+    <section id="comment" class="section white-bg">
+        <h3>Comentários</h3>
+
+        <div id="add-comment" class="create">
+            <h4>Adicionar um novo comentário</h4>
+            <textarea name="comment" id="comment-conteudo" class="textarea" cols="30" rows="10" placeholder="Escreva um comentário"></textarea>
+            <button id="btnAddComment" class="button">Publicar</button>
+        </div>
+
+        <div id="container-comments">
+            <template id="comment-template">
+                <div class="content border">
+                    <p id="style-id">Comment Id: <span></span></p>
+                    <p><span></span></p>
+                </div>
+            </template>
+        </div>
+    </section>
+</body>
+</html>
