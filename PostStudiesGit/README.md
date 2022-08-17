@@ -20,6 +20,8 @@ Projeto desenvolvido para estudos de backend na disciplina Programação para In
 
 ## Referências
 
+### Docker
+
  - https://hub.docker.com/_/postgres
 
  - https://renatogroffe.medium.com/postgresql-pgadmin-4-docker-compose-montando-rapidamente-um-ambiente-para-uso-55a2ab230b89
@@ -29,3 +31,9 @@ Projeto desenvolvido para estudos de backend na disciplina Programação para In
  - https://docs.docker.com/desktop/install/ubuntu/
 
  - https://www.digitalocean.com/community/tutorials/how-to-install-and-use-docker-on-ubuntu-20-04-pt
+
+ ### Postgres
+
+ - https://www.thisdot.co/blog/connecting-to-postgresql-with-node-js
+ 
+ - https://node-postgres.com/features/connecting
