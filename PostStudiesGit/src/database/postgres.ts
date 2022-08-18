@@ -1,4 +1,4 @@
-const {Pool, Client} = require('pg');
+const {Client} = require('pg');
 import 'dotenv/config';
 
 
@@ -12,26 +12,7 @@ const credentials = {
     port: 15432,
 }
 
-const connectPool = async () => {
-    const pool = new Pool(credentials);
-    const now = await pool.query("SELECT NOW()");
-    await pool.end();
+const pgClient = new Client(credentials);
 
-    return now;
-}
 
-const connectClient = async () => {
-    const client = new Client(credentials);
-    const now = await client.query("SELECT NOW()");
-    await client.end();
-
-    return now;
-}
-
-(async() => {
-    const poolResult = await connectPool();
-    console.log("Time with pool: " + poolResult.rows[0]["now"]);
-
-    const clientResult = await connectClient();
-    console.log("Time with client: " + clientResult.rows[0]["now"]);
-})();
+export {credentials, Client};

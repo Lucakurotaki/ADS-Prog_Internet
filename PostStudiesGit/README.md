@@ -37,3 +37,5 @@ Projeto desenvolvido para estudos de backend na disciplina Programação para In
  - https://www.thisdot.co/blog/connecting-to-postgresql-with-node-js
  
  - https://node-postgres.com/features/connecting
+
+ - https://www.youtube.com/watch?v=qRhzfZKmcts&t=240s
