@@ -12,7 +12,4 @@ const credentials = {
     port: 15432,
 }
 
-const pgClient = new Client(credentials);
-
-
 export {credentials, Client};

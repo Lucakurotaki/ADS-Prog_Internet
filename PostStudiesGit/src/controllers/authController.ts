@@ -1,5 +1,6 @@
 import { Request, Response } from "express";
 import { credentials, Client } from "../database/postgres";
+const bcrypt = require('bcryptjs');
 
 interface User{
     id?: string;
@@ -36,6 +37,9 @@ export class AuthController{
             return res.status(409).json({error: "Account already exists."});
         }
 
+        const salt = bcrypt.genSaltSync();
+        user.password = bcrypt.hashSync(user.password, salt);
+
         const iText = `
             INSERT INTO userdata (name, email, password)
             VALUES ($1, $2, $3)
@@ -61,17 +65,21 @@ export class AuthController{
 
         await pgClient.connect();
 
-        const fuText = `SELECT * FROM userdata WHERE email = $1 AND password = $2`
-        const fuValues = [user.email, user.password];
+        const fuText = `SELECT * FROM userdata WHERE email = $1`
+        const fuValue = [user.email];
 
-        const foundUser = await pgClient.query(fuText, fuValues);
-
-        if(foundUser.rows.length == 0){
-            pgClient.end();
-            return res.status(401).json({error: "Username or password is invalid."})
-        }
+        const foundUser = await pgClient.query(fuText, fuValue);
 
         pgClient.end();
+
+        if(foundUser.rows.length == 0){
+            
+            return res.status(401).json({error: "Invalid Username."});
+        }
+
+        if(!bcrypt.compareSync(user.password, foundUser.rows[0]['password'])){
+            return res.status(401).json({error: "Invalid Password."});
+        }
 
         return res.status(200).json(foundUser.rows[0]);
     }
