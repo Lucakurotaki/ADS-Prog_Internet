@@ -39,3 +39,7 @@ Projeto desenvolvido para estudos de backend na disciplina Programação para In
  - https://node-postgres.com/features/connecting
 
  - https://www.youtube.com/watch?v=qRhzfZKmcts&t=240s
+
+ ### Bycript
+
+ - https://www.npmjs.com/package/bcryptjs
