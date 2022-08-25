@@ -1,4 +1,5 @@
 import { NextFunction, Request, Response } from "express"
+import { PostgresJWTAuthTokenRepository } from "../repository/postgresAuthTokenRepository";
 
 export const authMiddleware = (req: Request, res: Response, next: NextFunction) =>{
     const auth = req.headers.authorization;
@@ -16,4 +17,6 @@ export const authMiddleware = (req: Request, res: Response, next: NextFunction) 
     if(authType == 'Bearer'){
         
     }
+
+    
 }

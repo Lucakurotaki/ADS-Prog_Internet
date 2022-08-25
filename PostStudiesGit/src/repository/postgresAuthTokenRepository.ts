@@ -28,6 +28,12 @@ export class PostgresJWTAuthTokenRepository{
     }
 
     public check = async ()=>{
-        //TODO
+        const pgClient = new Client(credentials);
+
+        await pgClient.connect();
+
+        const text = `
+            SELECT * FROM jwttoken WHERE 
+        `
     }
 }
