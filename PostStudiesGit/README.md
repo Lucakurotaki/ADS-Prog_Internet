@@ -40,6 +40,11 @@ Projeto desenvolvido para estudos de backend na disciplina Programação para In
 
  - https://www.youtube.com/watch?v=qRhzfZKmcts&t=240s
 
- ### Bycript
+ ### Bcrypt
 
  - https://www.npmjs.com/package/bcryptjs
+
+ ### JWT
+
+ - https://www.devmedia.com.br/como-o-jwt-funciona/40265
+ - https://www.luiztools.com.br/post/autenticacao-json-web-token-jwt-em-nodejs/

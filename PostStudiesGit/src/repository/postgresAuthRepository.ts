@@ -1,17 +1,13 @@
 import { credentials, Client } from "../database/postgres";
-
+import jwt from 'jsonwebtoken';
 import bcrypt from 'bcrypt';
+import 'dotenv/config'
 
 interface User{
     id?: string;
     name?: string;
     email: string;
     password: string;
-}
-
-interface Result{
-    status: number;
-    content: object;
 }
 
 export class PostgresAuthRepository{
@@ -21,7 +17,7 @@ export class PostgresAuthRepository{
         this.credentials = credentials;
     }
 
-    public async register(user: User): Promise<Result>{
+    public async register(user: User): Promise<object>{
 
         const pgClient = new Client(this.credentials);
 
@@ -34,7 +30,7 @@ export class PostgresAuthRepository{
 
         if (foundUser.rows.length != 0){
             pgClient.end();
-            return {status: 409, content: {error: "Account already exists."}}
+            throw new Error("Account already exists.");
         }
 
         const salt = bcrypt.genSaltSync();
@@ -52,11 +48,13 @@ export class PostgresAuthRepository{
 
 
         await pgClient.end();
+        
+        const id = result.rows[0]['id'];
 
-        return {status: 200, content: {id: result.rows[0]["id"]}} as Result;
+        return {id} ;
     }
 
-    public async enter(user: User): Promise<Result>{
+    public async enter(user: User){
 
         const pgClient = new Client(this.credentials);
 
@@ -70,14 +68,19 @@ export class PostgresAuthRepository{
         await pgClient.end();
 
         if(foundUser.rows.length == 0){
-            return {status: 401, content: {error: "Invalid Username."}} as Result;
+            throw new Error("Invalid Username.");
         }
 
         if(!bcrypt.compareSync(user.password, foundUser.rows[0]['password'])){
-            return {status: 401, content: {error: "Invalid Password."}} as Result;
+            throw new Error("Invalid Password.");
         }
 
-        return {status: 200, content: foundUser.rows[0]} as Result;
+        const userData = foundUser.rows[0]
+
+        const jwtAccessToken = jwt.sign({email: user.email}, process.env.JWT_SECRET!, {expiresIn: '1d' });
+        const jwtRefreshToken = jwt.sign({email: user.email}, process.env.JWT_SECRET!, {expiresIn: '30d'});
+
+        return {userData, jwtAccessToken, jwtRefreshToken};
     }
 
 }
