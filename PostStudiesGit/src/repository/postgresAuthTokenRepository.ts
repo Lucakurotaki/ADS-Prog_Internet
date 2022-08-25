@@ -1,8 +1,8 @@
 import { credentials, Client } from "../database/postgres";
 
 interface TokenObject{
-    token: string;
-    user: object;
+    refreshToken: string;
+    userId: string;
 }
 
 export class PostgresJWTAuthTokenRepository{
@@ -12,18 +12,22 @@ export class PostgresJWTAuthTokenRepository{
         await pgClient.connect();
 
         const text = `
-            INSERT INTO jwttoken (user, token)
-            VALUES = ($1, $2)
-            RETURNING token
+            INSERT INTO jwttoken (userid, refreshtoken)
+            VALUES ($1, $2)
+            RETURNING refreshtoken
         `;
 
-        const values = [tokenObject.user, tokenObject.token];
+        const values = [tokenObject.userId, tokenObject.refreshToken];
         
         const result = await pgClient.query(text, values);
 
         await pgClient.end();
 
-        return result.rows[0]['token'];
+        return result.rows[0]['refreshtoken'];
 
+    }
+
+    public check = async ()=>{
+        //TODO
     }
 }

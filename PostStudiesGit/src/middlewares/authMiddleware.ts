@@ -10,6 +10,10 @@ export const authMiddleware = (req: Request, res: Response, next: NextFunction) 
     const [authType, authValue] = auth.split(' ');
 
     if(authType == 'Basic'){
+        //TODO
+    }
+
+    if(authType == 'Bearer'){
         
     }
 }

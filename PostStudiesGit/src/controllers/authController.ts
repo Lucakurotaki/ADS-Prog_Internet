@@ -35,11 +35,13 @@ export class AuthController{
 
         const result = await repository.enter(user);
 
+        const userId = result.userData['id'];
+
         const jwtTokenRepo = new PostgresJWTAuthTokenRepository();
 
-        const jwtRefreshToken = await jwtTokenRepo.store({user: result.userData, token: result.jwtRefreshToken});
+        const jwtRefreshToken = await jwtTokenRepo.store({userId: userId, refreshToken: result.jwtRefreshToken});
         
-        return res.status(200).json({user: result.userData, jwtRefreshToken});
+        return res.status(200).json({user: result.userData, token: jwtRefreshToken});
     }
 
     public me = async (req: Request, res: Response): Promise<Response> => {
