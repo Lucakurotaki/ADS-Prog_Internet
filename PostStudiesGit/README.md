@@ -48,3 +48,4 @@ Projeto desenvolvido para estudos de backend na disciplina Programação para In
 
  - https://www.devmedia.com.br/como-o-jwt-funciona/40265
  - https://www.luiztools.com.br/post/autenticacao-json-web-token-jwt-em-nodejs/
+ - https://www.youtube.com/watch?v=51Rk_HBscP0

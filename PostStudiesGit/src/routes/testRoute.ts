@@ -5,8 +5,8 @@ const testRouter = Router();
 
 testRouter.use(authMiddleware)
 
-testRouter.get('/get', (req,res)=>{
-    return res.status(200).json('OK');
+testRouter.get('/', (req,res)=>{
+    return res.status(200).json('Test: OK');
 });
 
 export default testRouter;
