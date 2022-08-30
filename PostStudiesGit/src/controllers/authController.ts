@@ -1,6 +1,7 @@
 import { Request, Response } from "express";
 import { PostgresAuthRepository } from "../repository/postgresAuthRepository";
 import { PostgresAuthTokenRepository } from "../repository/postgresAuthTokenRepository";
+import { passwordValidator } from "../utils/passwordValidator";
 
 export class AuthController {
 
@@ -16,6 +17,8 @@ export class AuthController {
 
 
         try {
+            passwordValidator(password);
+
             const result = await repository.register(user);
 
             return res.status(201).json(result);
@@ -78,7 +81,30 @@ export class AuthController {
         }
     }
 
+    public changePassword = async (req: Request, res: Response): Promise<Response> =>{
+        const repository = new PostgresAuthRepository();
+
+        const { user_email, oldPassword, newPassword } = req.body;
+
+
+        try {
+            if(oldPassword == newPassword){
+                throw new Error("The new password must be different from the old password.");
+            }
+            passwordValidator(newPassword);
+
+            const result = await repository.changePass(user_email, oldPassword, newPassword);
+
+            return res.status(200).json(result);
+        } catch (e) {
+            const error = e as Error
+            return res.status(400).json({ error: error.message });
+        }
+    }
+
     public me = async (req: Request, res: Response): Promise<Response> => {
         return res.status(200).send();
     }
+
+    
 }
