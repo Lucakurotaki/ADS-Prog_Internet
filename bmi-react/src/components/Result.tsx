@@ -1,9 +1,10 @@
 interface ResultProps{
-    bmi: number;
+    value: any;
+    label: string;
 }
 
-export function Result({bmi}: ResultProps){
+export function Result({value, label}: ResultProps){
     return(
-        <section id="result">BMI: <span>{bmi.toFixed(2)}</span> </section>
+        <section id="result">{label}<span>{value}</span> </section>
     )
 }

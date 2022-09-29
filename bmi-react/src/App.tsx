@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { ChangeEvent, useState } from 'react';
 import './App.css';
 import { Button } from './components/Button';
 import { Footer } from './components/Footer';
@@ -12,16 +12,16 @@ function App() {
   const [weight, setWeight] = useState(0);
   const [height, setHeight] = useState(0);
 
-  const onChangeSetName = (event: any) => {
+  const onChangeSetName = (event: ChangeEvent<HTMLInputElement>) => {
     setName(event.target.value)
   }
 
-  const onChangeSetWeight = (event: any) => {
-    setWeight(event.target.value)
+  const onChangeSetWeight = (event: ChangeEvent<HTMLInputElement>) => {
+    setWeight(Number(event.target.value))
   }
 
-  const onChangeSetHeight = (event: any) => {
-    setHeight(event.target.value)
+  const onChangeSetHeight = (event: ChangeEvent<HTMLInputElement>) => {
+    setHeight(Number(event.target.value))
   }
 
   const calculateBmi = (weight: number, height: number) => {
@@ -52,7 +52,7 @@ function App() {
           <Button label='Calculate' onClickCallback={onClick} />
         </form>
 
-        <Result bmi={bmi} />
+        <Result value={bmi.toFixed(2)} label="BMI: " />
 
       </main>
 

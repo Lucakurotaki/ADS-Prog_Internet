@@ -1,4 +1,5 @@
 import { ChangeEventHandler } from "react";
+import { Input } from "./Input";
 
 interface InputControlProps {
     label: string;
@@ -13,13 +14,7 @@ export function InputControl({ label, value, type, onChangeCallback, placeHolder
         <>
             <div className="input-control">
                 <label>{label}</label>
-                <input
-                    autoComplete="off"
-                    type={type}
-                    value={value}
-                    onChange={onChangeCallback}
-                    placeholder={placeHolder}
-                />
+                <Input type={type} value={value} onChangeCallback={onChangeCallback} placeHolder={placeHolder}/>
             </div>
         </>
     )
