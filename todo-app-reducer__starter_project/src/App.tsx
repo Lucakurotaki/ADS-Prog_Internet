@@ -1,8 +1,8 @@
-import { useState } from 'react';
 import './App.css';
 import { AddTask } from './components/add_task';
 import { TaskList } from './components/list_task';
-import {useReducer} from 'react';
+import { useReducer } from 'react';
+import styled from 'styled-components';
 
 
 export default function App() {
@@ -30,24 +30,37 @@ export default function App() {
     });
   }
 
+  //styled-components
+  const StyledH1 = styled.h1`
+  font-size: 2em;
+  text-align: center;
+  color: green;
+  `
+
+  const StyledH3 = styled.h3`
+  font-size: 1.5em;
+  text-align: center;
+  color: red;
+  `
+
   return (
     <div className="App">
-      <h1>React + Reducer</h1>
-      <h3>Tasks</h3>
-      
+      <StyledH1>React + Reducer</StyledH1>
+      <StyledH3>Tasks</StyledH3>
+
       <AddTask onAddTask={handleAddTask} />
-      
+
       <TaskList
         tasks={tasks}
         onChangeTask={handleChangeTask}
         onDeleteTask={handleDeleteTask}
       />
-      
+
     </div>
   )
 }
 
-export interface Task{
+export interface Task {
   id: number
   text: string
   done: boolean
@@ -56,9 +69,9 @@ export interface Task{
 let nextId = 3;
 
 const initialTasks: Task[] = [
-  {id: 0, text: 'Elaborar Aulas', done: true},
-  {id: 1, text: 'Estudar Flutter - Estados', done: false},
-  {id: 2, text: 'Correr avenida Raul Lopres', done: false},
+  { id: 0, text: 'Elaborar Aulas', done: true },
+  { id: 1, text: 'Estudar Flutter - Estados', done: false },
+  { id: 2, text: 'Correr avenida Raul Lopres', done: false },
 ];
 
 function tasksReducer(tasks: Task[], action: any) {

@@ -1,6 +1,5 @@
 import { ChangeEvent, useCallback, useEffect, useMemo, useRef, useState } from "react"
 import { Task } from "../App"
-
 interface TaskItemProps{
     task: Task
     onChangeTask: any
