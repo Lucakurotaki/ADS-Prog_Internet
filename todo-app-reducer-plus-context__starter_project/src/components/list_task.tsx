@@ -1,23 +1,18 @@
-import { Task } from "../App"
+import { useTasks } from "../contexts/TasksContext"
+import { Task } from "../models/models"
 import { TaskItem } from "./item_task"
 
-interface TaskListProps{
-    tasks: Task[]
-    onChangeTask: any
-    onDeleteTask: (taskId: number) => void
-}
+export function TaskList(){
 
-
-export function TaskList({tasks, onChangeTask, onDeleteTask}: TaskListProps){
+    const state = useTasks();
+    
 
     return (
         <>
             <ul>
-                {tasks.map(task => (
+                {state.tasks.map((task: Task) => (
                    <TaskItem key={task.id} 
-                        task={task} 
-                        onChangeTask={onChangeTask} 
-                        onDeleteTask={onDeleteTask} />
+                        task={task}/>
                 ))}
             </ul>
         </>

@@ -17,12 +17,13 @@ export const initialTasksState: TasksState = {
 
 export enum ActionType{'Added','Changed','Deleted'}
 
-type Action = 
+export type Action = 
     {type: ActionType.Added, args: {text: string}}
     | {type: ActionType.Changed, args: {task: Task}}
     | {type: ActionType.Deleted, args: {id: number}}
 
-  
+
+    
 const tasksReducer = (state: TasksState, action: Action): TasksState => {
     switch (action.type) {
         case ActionType.Added:
@@ -30,12 +31,12 @@ const tasksReducer = (state: TasksState, action: Action): TasksState => {
             return {nextId: state.nextId++, tasks: [...state.tasks, newTask]}
         case ActionType.Changed:
             const uTask = action.args.task
-            const tasks = state.tasks.map(task => task.id === uTask.id ? uTask : task)
+            const tasks = state.tasks.map((task) => task.id === uTask.id ? uTask : task)
             return {...state, tasks}
         case ActionType.Deleted:
             const deletedTaskId = action.args.id
             const nextId = state.nextId--
-            return {nextId, tasks: state.tasks.filter(task => task.id !== deletedTaskId)}
+            return {nextId, tasks: state.tasks.filter((task) => task.id !== deletedTaskId)}
         default:
             console.debug('Unknow task action' + action)
             return state
